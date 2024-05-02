@@ -1,0 +1,26 @@
+.active{
+    color: #f67171 !important;
+}
+
+.HomePageBg{
+    background: url('../assets/home.jpg') , no-repeat , center;
+    background-size:cover;
+}
+
+
+.theScrollBar::-webkit-scrollbar {
+    height: 10px;
+}
+
+.theScrollBar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.theScrollBar::-webkit-scrollbar-thumb {
+    background: #f67171e8;
+    border-radius: 10rem;
+}
+
+.theScrollBar::-webkit-scrollbar-thumb:hover {
+    background: #f67171;
+}
