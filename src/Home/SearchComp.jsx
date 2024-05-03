@@ -1,10 +1,21 @@
 import { Input } from '@/components/ui/input'
+import useFetch from '@/hook/useFetch'
 import { Search } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const SearchComp = () => {
     const [input , setInput] = useState('')
-    console.log(input.length);
+    const [data , getData] = useFetch()
+    useEffect(() => {
+        let timeoutId = setTimeout(() => {
+            getData(`https://e-comm-qfj9.onrender.com/api/get/products/search?value=${input}`)
+        } , 500)
+
+        return () => clearTimeout(timeoutId);
+    } , [input])
+
+    console.log(data);
+
     return (
         <section className=' relative'>
             <div className=' w-[20rem] border rounded-lg'>
@@ -19,8 +30,10 @@ const SearchComp = () => {
                 </div>
             </div>
             {input.length !==0 && (
-                <div className='w-[20rem] border p-2 rounded-lg bg-white absolute bottom-[-3rem] shadow-lg'>
-                    <h1>{input}</h1>
+                <div className='w-[20rem] z-[9999] border p-2 rounded-lg bg-white absolute  shadow-lg'>
+                    {data.length !==0 && data.map((ele) => (
+                        <h1 key={ele._id}>{ele.name}</h1>
+                    ))}
                 </div>
             )}
         </section>

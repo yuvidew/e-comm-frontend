@@ -14,7 +14,6 @@ import useFetch from '@/hook/useFetch'
 import { NavLink, useSearchParams } from 'react-router-dom'
 
 
-
 const SearchComp = () => {
     const [data , getData] = useFetch()
     const [searchParams , setSearchParams] = useSearchParams({
@@ -26,7 +25,7 @@ const SearchComp = () => {
 
     useEffect(() => {
         let timeoutId = setTimeout(() => {
-            getData(`/api/get/products/search?value=${query}`)
+            getData(`https://e-comm-qfj9.onrender.com/api/get/products/search?value=${query}`)
         } , 500)
 
         return () => clearTimeout(timeoutId);

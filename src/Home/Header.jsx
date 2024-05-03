@@ -1,9 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './HomeStyle.css'
-import { Button } from '@/components/ui/button'
-import { MenuIcon } from 'lucide-react'
 import Authentication from '@/ExtraComp/Authentication'
+import { MenuBar } from './MenuBar'
 
 const Header = () => {
     const itsTrue = localStorage.getItem("userAuth")
@@ -32,9 +31,7 @@ const Header = () => {
                                 {<Authentication />}
                             </div>
                         </nav>
-                        <Button className = "lg:hidden md:hidden block bg-[#f67171] hover:bg-[#f67171c7]">
-                            <MenuIcon/>
-                        </Button>
+                        <MenuBar/>
                     </div>
                 </main>
             </div>
