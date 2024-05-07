@@ -18,7 +18,7 @@ const Header = () => {
                         </NavLink>
 
                         <NavLink to={'/shopping'} className={" text-muted-foreground ml-4"} activeClassName = {"active"}>
-                                Shopping
+                            Shopping
                         </NavLink>
                         <NavLink to={'/contacts'} className={" text-muted-foreground "} activeClassName = {"active"}>
                             Contacts

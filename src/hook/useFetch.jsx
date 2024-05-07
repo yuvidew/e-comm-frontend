@@ -6,14 +6,27 @@ const useFetch =  () => {
 
     const getData = async (url) => {
         try {
-            const res  = await axios(url)
+            const res  = await axios.get(url)
             setData(res.data)
         } catch (error) {
             setData(null)
         }
     }
 
-    return [data , getData]
+    const postData = async (url , obj) => {
+        try {
+            const res = await axios.patch(url , obj)
+            if(res.status == 201){
+                alert(res.data.msg)
+            }else{
+                alert(res.data.msg)
+            }
+        } catch (error) {
+            alert('something is wrong..')
+        }
+    }
+
+    return [data , getData , postData]
 }
 
 export default useFetch

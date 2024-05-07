@@ -10,7 +10,7 @@ export const useSignUpHook = () => {
         .then(v => {
             console.log( "object " , v);
             enqueueSnackbar('You are successfully sign up !', { variant: 'success' });
-        }).catch(err => enqueueSnackbar(err, { variant: 'error' }))
+        }).catch(err => alert("same error"))
     }
     return [handleSignUp]
 }

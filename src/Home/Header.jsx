@@ -3,9 +3,15 @@ import { NavLink } from 'react-router-dom'
 import './HomeStyle.css'
 import Authentication from '@/ExtraComp/Authentication'
 import { MenuBar } from './MenuBar'
+import { Button } from '@/components/ui/button'
+import { Power } from 'lucide-react'
 
 const Header = () => {
     const itsTrue = localStorage.getItem("userAuth")
+    const onLogout = () => {
+        localStorage.removeItem("userAuth")
+        window.location.reload()
+    }
 
     return (
         <header className=' h-[5rem] '>
@@ -29,6 +35,11 @@ const Header = () => {
                             </NavLink>
                             <div className={itsTrue !== null ? "hidden" : 'block'}>
                                 {<Authentication />}
+                            </div>
+                            <div className={itsTrue !== null ? "block" : 'hidden'}>
+                                <Button variant = "outline" onClick ={onLogout} >
+                                    <Power className=' h-4 w-4' />
+                                </Button>
                             </div>
                         </nav>
                         <MenuBar/>

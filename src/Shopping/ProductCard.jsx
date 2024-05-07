@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     Card,
     CardContent,
@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 
 
 const ProductCard = ({items}) => {
+
     return (
         <Card className = " ">
             <div className='overflow-hidden '>
@@ -29,9 +30,9 @@ const ProductCard = ({items}) => {
                 </div>
             </CardHeader>
             <CardFooter>
-                <Link to={'/'} className=' w-full'>
+                <Link to={`/shopping/${items._id}`} className=' w-full'>
                     <Button variant = "pink" className = "w-full text-stone-100">
-                            Order now <ShoppingBag className='h-4 m-4 ml-1'/>
+                        Order now <ShoppingBag className='h-4 m-4 ml-1'/>
                     </Button>
                 </Link>
             </CardFooter>

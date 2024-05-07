@@ -1,24 +1,34 @@
 
-import { useSnackbar } from 'notistack'
 import axios from 'axios'
 
 export const useLoginHook = () => {
-    const {enqueueSnackbar} = useSnackbar()
-    const signInUser = async(email , p) => {
-        const res = await axios.post('https://e-comm-qfj9.onrender.com/api/post/user/signin' , {
-            email
+    const signInUser = async(email , url) => {
+        const res = await axios.post(url , {
+            email : email
         })
-        console.log(res);
+        console.log("the result " , res);
 
         if(res.status == 201){
             localStorage.setItem('userAuth' , res.data.auth)
-            if(res.data.cardId != null){
-                localStorage.setItem('cardId' , res.data.cardId)
-            }
             window.location.reload()
-        }else{
-            enqueueSnackbar(res.data.msg, { variant: 'error' })
+        }if(res.status == 400){
+            alert(res.data.msg)
         }
     }
-    return [signInUser]
+    const signUpUser = async (userData, url) => {
+        const res = await axios.post(url , userData)
+        if(res.status == 201){
+            localStorage.setItem('cardId' , res.data.cardId)
+            alert(res.data.msg)
+        }
+
+        if(res.status == 401){
+            alert(res.data.msg)
+        }
+
+        if(res.status == 400){
+            alert(res.data.msg)
+        }
+    }
+    return [signInUser , signUpUser]
 }

@@ -6,10 +6,10 @@ import {
 import { Key, User } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { useSignUpHook } from '@/hook/useSignUphook'
+import { useLoginHook } from '@/hook/useLoginHook'
 
 const SignUp = () => {
-    const [handleSignUp] = useSignUpHook()
+    const [signUpUser] = useLoginHook()
     const [form , setForm] = useState({
         email : "",
         password : "",
@@ -25,7 +25,7 @@ const SignUp = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        handleSignUp(form.email , form.password)
+        signUpUser(form , 'https://e-comm-qfj9.onrender.com/api/post/user/signup')
     }
 
     return (

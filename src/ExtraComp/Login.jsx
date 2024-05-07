@@ -10,22 +10,11 @@ import { useLoginHook } from '@/hook/useLoginHook'
 
 const Login = () => {
     const [signInUser] = useLoginHook()
-    const [form , setForm] = useState({
-        email: "",
-        password : ""
-    })
-
-    const onChange = (e) => {
-        const {name , value} = e.target
-        setForm({
-            ...form, 
-            [name] : value
-        })
-    }
+    const [email , setEmail] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        signInUser(form.email , form.password)
+        signInUser(email , 'https://e-comm-qfj9.onrender.com/api/post/user/signin')
     }
 
     return (
@@ -43,24 +32,12 @@ const Login = () => {
                     <Input 
                         placeholder = "Enter Email Id.." 
                         className = "placeholder:text-black" 
-                        onChange = {onChange}
-                        value = {form.email}
+                        onChange = {(e) => setEmail(e.target.value)}
+                        value = {email}
                         name = "email"
                     />
                 </div>
-                <div className=' flex items-center gap-x-2 mt-[1rem]'>
-                    <Button type = "button" variant = "outline">
-                        <Key className='w-5 h-5'/>
-                    </Button>
-                    <Input 
-                        placeholder = "Enter Password.." 
-                        className = "placeholder:text-black" 
-                        onChange = {onChange}
-                        value = {form.password}
-                        name = "password"
-                    />
-                </div>
-                <div className=' mt-[3rem]'>
+                <div className=' mt-[2rem]'>
                     <Button variant = "pink" className = "text-white w-full">
                         Submit
                     </Button>

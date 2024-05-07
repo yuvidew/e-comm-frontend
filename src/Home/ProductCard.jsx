@@ -29,7 +29,7 @@ const ProductCard = ({items}) => {
             <CardFooter>
                 <Link to={'/'} className=' w-full'>
                     <Button variant = "pink" className = "w-full text-stone-100">
-                            Order now <ShoppingBag className='h-4 m-4 ml-1'/>
+                        Order now <ShoppingBag className='h-4 m-4 ml-1'/>
                     </Button>
                 </Link>
             </CardFooter>
